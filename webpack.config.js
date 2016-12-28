@@ -7,10 +7,11 @@ const QiniuPlugin = require('qiniu-plugin')
 
 module.exports = {
 	entry:{ 
-        network : [
+        network: [
         //'webpack-dev-server/client?http://localhost:8080',
         //'webpack/hot/only-dev-server',
-        './Src/View/Network/network']
+        './Src/View/Index/index'],
+        index: './Src/View/Index/index'
     },
     //devtool: "cheap-module-source-map",
 	output: {
@@ -74,10 +75,15 @@ module.exports = {
               }
             }),
         new webpack.optimize.UglifyJsPlugin(),*/
-        new HtmlWebpackPlugin({
+        /*new HtmlWebpackPlugin({
             filename: 'network.html',
             template:  path_.join(__dirname, '/Src/View/Network/network.html') ,
             chunks: ['network'],
+        }),*/
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template:  path_.join(__dirname, '/Src/View/Index/index.html') ,
+            chunks: ['index'],
         }),
         //压缩JS
         /*new webpack.optimize.UglifyJsPlugin({
