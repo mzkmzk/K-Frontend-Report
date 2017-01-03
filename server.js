@@ -9,10 +9,10 @@ new WebpackDevServer(webpack(config), {
   stats: {
     colors: true
   }
-}).listen(80, 'lixian.xunlei.com', function (err) {
+}).listen(80, 'k-frontend-report.404mzk.com', function (err) {
   if (err) {
     console.log(err);
   }
 
-  console.log('Listening at localhost:3000');
+  console.log('Listening at k-frontend-report.404mzk.com');
 });

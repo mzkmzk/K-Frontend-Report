@@ -11,24 +11,24 @@ import MenuItem from 'material-ui/MenuItem'
 
 import action_network from '../../Actions/network'
 
-import Components_Network from '../../Components/Table/Table'
 
 import Utils from '../../Utils/Utils'
 
 class App extends Component {
     
     render() {
-        console.log('render')
-        let { actions, network } = this.props
-        return ( 
+        let { actions, network, children, params } = this.props,
+            type = params
 
+        return ( 
             <div>
                 <Drawer open={true}>
-                  <Link to="/table/loadtime?type=loadtime"><MenuItem>Loadtime</MenuItem></Link>
-                  <Link to="/table/network?type=network"><MenuItem>Network</MenuItem></Link>
-                  <Link to="/table/error?type=error"><MenuItem>Error</MenuItem></Link>
+                  <Link to="/loadtime"><MenuItem>Loadtime</MenuItem></Link>
+                  <Link to="/network"><MenuItem>Network</MenuItem></Link>
+                  <Link to="/error"><MenuItem>Error</MenuItem></Link>
                 </Drawer>
-                <Components_Network ajax_url={'loadtime'} network={network} actions={actions}/>
+                {children}
+                
             </div>
  
         )

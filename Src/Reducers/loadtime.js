@@ -1,6 +1,6 @@
 import data_reducer from './utils/data'
 
-const NAME = 'network'
+const NAME = 'loadtime'
 
 exports[NAME] = (...params) => {
     params.push( NAME )

@@ -1,69 +1,42 @@
-import React, { Component, PropTypes} from 'react'
-import ReactDOM , { render } from 'react-dom'
+import React , { Component } from 'react'
+import { render } from 'react-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
 
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 
+import action_network from '../../Actions/network'
+import Pagination from '../Utils/Pagination/Pagination'
+
 import CONSTANT from '../../Constant/Constant'
 import Utils from '../../Utils/Utils'
     
-const type_to_url = {
-    'loadtime': CONSTANT.URL.LOADTIME_QUERY,
-    'network': CONSTANT.URL.NETWORK_QUERY,
-    'error': CONSTANT.URL.ERROR_QUERY,
+const style = {
+  margin: 12
 }
 
-export default class Network extends Component {
+class Network extends Component {
 
     constructor(props) {
       super(props)
       
-      this.get_ajax_url.bind(this)
       this.state = {
-          type: 'loadtime',
           showCheckboxes: false
       }
-    }
-
-    get_type(){
-        let url_params = Utils.get_url_params(),
-            type = url_params.type || 'loadtime'
-        return type
-    }
-
-    get_ajax_url(){
-        return type_to_url[ this.get_type() ]
     }
 
     componentDidMount() {
         let { actions } = this.props
 
-        actions.ajax_load_data(1,this.get_ajax_url())
+        actions.ajax_load_data_network(1)
     }
     
-    componentWillReceiveProps( nextProps ) {
-      let { actions } = this.props
-            
-        if (nextProps.params.type !== this.props.params.type) {
-            this.state.type = type
-            actions.ajax_load_data(1,this.get_ajax_url())
-        }
-    }
-
-    componentDidUpdate (prevProps) {
-    // 上面步骤3，通过参数更新数据
-      /*let { actions,ajax_url } = this.props
-      let oldId = prevProps.params.type
-      let newId = this.props.params.type
-      if (newId !== oldId)
-        actions.ajax_load_data(1,ajax_url)*/
-    }
-
     render() {
-        let { network, actions, ajax_url } = this.props,
-            { ajax_load_data } = actions,
+        let { network, actions } = this.props,
+            { ajax_load_data_network } = actions,
             { data }= network
         
         return (
@@ -92,21 +65,14 @@ export default class Network extends Component {
                             <TableRow key={data_one.id}>
                                 <TableRowColumn>{data_one.id}</TableRowColumn>
                                 <TableRowColumn>{data_one.duration}</TableRowColumn>
-                                <TableRowColumn>{data_one.url}</TableRowColumn>
+                                <TableRowColumn title={data_one.url}>{data_one.url}</TableRowColumn>
                                 <TableRowColumn title={data_one.referer}>{data_one.referer}</TableRowColumn>
                             </TableRow>
                         )
                     }
                     </TableBody>
                   </Table>
-                  <div>
-                    <RaisedButton onClick={() => ajax_load_data(network.current_page - 1, ajax_url)} label="Prev" primary={true} style={style} />
-                    <TextField hintText="What page?" />
-                    <RaisedButton label="Go" secondary={true} style={style} />
-                    <RaisedButton onClick={() => ajax_load_data(network.current_page + 1, ajax_url)} label="Next" primary={true} style={style} />
-                    <p>当前第{network.current_page}页</p>
-                    <p>共{network.total}条记录</p>
-                  </div>
+                  <Pagination entity={network} ajax_load_data={ajax_load_data_network} />
                   
                 </div>
           </div>
@@ -114,7 +80,27 @@ export default class Network extends Component {
     }
 }
 
-const style = {
-  margin: 12
+function mapStateToProps(state) {
+    return state
 }
+
+function mapDispatchToProps(dispatch) {
+
+    return {
+        actions: bindActionCreators(
+        Object.assign(
+            {},
+            action_network
+         ),
+        dispatch)
+    }
+}
+
+export default Network = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Network)
+
+
+
 

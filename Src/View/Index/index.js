@@ -5,7 +5,10 @@ import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import App from '../../Containers/App/App'
-import Table from '../../Components/Table/Table'
+import Network from '../../Components/Network/Network'
+import Loadtime from '../../Components/Loadtime/Loadtime'
+import Error from '../../Components/Error/Error'
+
 
 import { configure_index_store } from '../../Store/configure_index_store'
 
@@ -27,10 +30,11 @@ singleKLogging.setOptions(
      <MuiThemeProvider>
          <Router history={browserHistory}>
               <Route path="/" component={App}>
-              <Route path="/table" component={Table}>
-                  
-                  <Route path="/table/:type" component={Table}/>
-              </Route>
+                <IndexRoute component={Loadtime} />
+                <Route path="/loadtime" component={Loadtime}/>
+                <Route path="/network" component={Network}/>
+                <Route path="/error" component={Error}/>
+                
               
             </Route>
           </Router>  
