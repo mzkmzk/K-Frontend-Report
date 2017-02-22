@@ -55,6 +55,7 @@ class Network extends Component {
                         <TableHeaderColumn>Duration</TableHeaderColumn>
                         <TableHeaderColumn>URL</TableHeaderColumn>
                         <TableHeaderColumn>Referer</TableHeaderColumn>
+                         <TableHeaderColumn>更新时间</TableHeaderColumn>
                       </TableRow>
                     </TableHeader>
                     <TableBody
@@ -67,6 +68,8 @@ class Network extends Component {
                                 <TableRowColumn>{data_one.duration}</TableRowColumn>
                                 <TableRowColumn title={data_one.url}>{data_one.url}</TableRowColumn>
                                 <TableRowColumn title={data_one.referer}>{data_one.referer}</TableRowColumn>
+                                <TableRowColumn title={data_one.updated_at}>{data_one.updated_at}</TableRowColumn>
+
                             </TableRow>
                         )
                     }

@@ -5,11 +5,11 @@ import { combineReducers } from 'redux'
 import { error } from './error'
 import { network } from './network'
 import { loadtime } from './loadtime'
-
-
+import all_charts from './all_charts'
 
 exports.index = combineReducers({
     error,
     network,
-    loadtime
+    loadtime,
+    all_charts
 })

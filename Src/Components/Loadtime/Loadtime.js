@@ -56,6 +56,7 @@ class Loadtime extends Component {
                         <TableHeaderColumn>首屏时间</TableHeaderColumn>
                         <TableHeaderColumn>window加载完成</TableHeaderColumn>
                         <TableHeaderColumn>Referer</TableHeaderColumn>
+                        <TableHeaderColumn>更新时间</TableHeaderColumn>
                       </TableRow>
                     </TableHeader>
                     <TableBody
@@ -69,6 +70,7 @@ class Loadtime extends Component {
                                 <TableRowColumn>{data_one.atf}</TableRowColumn>
                                 <TableRowColumn>{data_one.window_loaded}</TableRowColumn>
                                 <TableRowColumn title={data_one.referer}>{data_one.referer}</TableRowColumn>
+                                <TableRowColumn title={data_one.updated_at}>{data_one.updated_at}</TableRowColumn>
                             </TableRow>
                         )
                     }

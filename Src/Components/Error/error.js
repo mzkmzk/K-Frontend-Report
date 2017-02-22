@@ -53,6 +53,7 @@ class Error extends Component {
                         <TableHeaderColumn>Object</TableHeaderColumn>
                         <TableHeaderColumn>URL</TableHeaderColumn>
                         <TableHeaderColumn>Referer</TableHeaderColumn>
+                         <TableHeaderColumn>更新时间</TableHeaderColumn>
                       </TableRow>
                     </TableHeader>
                     <TableBody
@@ -68,6 +69,8 @@ class Error extends Component {
                                 <TableRowColumn>{data_one.object}</TableRowColumn>
                                 <TableRowColumn title={data_one.url}>{data_one.url}</TableRowColumn>
                                 <TableRowColumn title={data_one.referer}>{data_one.referer}</TableRowColumn>
+                                <TableRowColumn title={data_one.updated_at}>{data_one.updated_at}</TableRowColumn>
+
                             </TableRow>
                         )
                     }

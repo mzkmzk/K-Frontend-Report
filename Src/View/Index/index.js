@@ -5,6 +5,7 @@ import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import App from '../../Containers/App/App'
+import All_Charts from '../../Components/All_Charts/All_Charts'
 import Network from '../../Components/Network/Network'
 import Loadtime from '../../Components/Loadtime/Loadtime'
 import Error from '../../Components/Error/Error'
@@ -30,7 +31,8 @@ singleKLogging.setOptions(
      <MuiThemeProvider>
          <Router history={browserHistory}>
               <Route path="/" component={App}>
-                <IndexRoute component={Loadtime} />
+                <IndexRoute component={All_Charts} />
+                 <Route path="/all_charts" component={All_Charts}/>
                 <Route path="/loadtime" component={Loadtime}/>
                 <Route path="/network" component={Network}/>
                 <Route path="/error" component={Error}/>
