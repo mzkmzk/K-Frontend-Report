@@ -23,10 +23,10 @@ class App extends Component {
         return ( 
             <div>
                 <Drawer open={true}>
-                  <Link to="/all_charts"><MenuItem>All_Charts</MenuItem></Link>
-                  <Link to="/loadtime"><MenuItem>Loadtime</MenuItem></Link>
-                  <Link to="/network"><MenuItem>Network</MenuItem></Link>
-                  <Link to="/error"><MenuItem>Error</MenuItem></Link>
+                  <Link to="all_charts"><MenuItem>All_Charts</MenuItem></Link>
+                  <Link to="loadtime"><MenuItem>Loadtime</MenuItem></Link>
+                  <Link to="network"><MenuItem>Network</MenuItem></Link>
+                  <Link to="error"><MenuItem>Error</MenuItem></Link>
                 </Drawer>
                 {children}
                 

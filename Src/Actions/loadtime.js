@@ -11,6 +11,6 @@ let handle_data = obj_result => {
     return obj_result
 }
 
-exports.ajax_load_data_loadtime = (page) => {
-    return ajax_load_data(page, CONSTANT.URL.LOADTIME_QUERY, NAME, handle_data)
+exports.ajax_load_data_loadtime = (page, params) => {
+    return ajax_load_data(page, CONSTANT.URL.LOADTIME_QUERY, NAME, handle_data, params)
 }

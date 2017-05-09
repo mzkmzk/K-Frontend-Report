@@ -6,7 +6,8 @@
   "scripts": {
     "publish": "export NODE_ENV=prod&&webpack  --progress --colors",
     "publish-win": "set NODE_ENV=prod&&webpack  --progress --colors",
-    "start": "webpack-dev-server --hot --inline --host k-frontend-report.404mzk.com --history-api-fallback --config ./webpack.config.js --port 9001"
+    "start": "webpack-dev-server --hot --inline --host k-frontend-report.404mzk.com --history-api-fallback --config ./webpack.config.js --port 9001",
+     "start-inside": "webpack-dev-server --hot --inline --host 10.10.45.12 --history-api-fallback --config ./webpack.config.js --port 9001"
   },
   "repository": {
     "type": "git",

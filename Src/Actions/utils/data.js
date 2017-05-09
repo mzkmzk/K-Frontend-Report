@@ -1,5 +1,6 @@
 import k_ajax from 'k_ajax'
 
+
 let load_data = function(data, type){
     return {
         type: 'LOAD_DATA_'+type.toUpperCase(),
@@ -25,12 +26,14 @@ let handle_data = data => {
     
 }
 
-exports.ajax_load_data = function(page, url, type, handle_data){
+exports.ajax_load_data = function(page, url, type, handle_data, params){
     return (dispatch, get_state) => {
-        let state = get_state(),
-            params = {
-                page
-            }
+        let state = get_state()
+        
+        params = Object.assign({
+            page
+        }, params) 
+
         k_ajax.getJSON(url,params,{
             success: function(result){
                 let obj_result = JSON.parse(result)

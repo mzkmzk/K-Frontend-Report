@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
+import { Router, Route, Link, browserHistory, IndexRoute,hashHistory } from 'react-router'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import App from '../../Containers/App/App'
@@ -29,7 +29,7 @@ singleKLogging.setOptions(
  render(
     <Provider store={store}>
      <MuiThemeProvider>
-         <Router history={browserHistory}>
+         <Router history={hashHistory}>
               <Route path="/" component={App}>
                 <IndexRoute component={All_Charts} />
                  <Route path="/all_charts" component={All_Charts}/>

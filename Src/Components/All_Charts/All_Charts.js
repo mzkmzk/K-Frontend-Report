@@ -23,7 +23,7 @@ class All_Charts extends Component {
     
     componentDidMount() {
         let { actions } = this.props
-
+         
         actions.ajax_load_loadtime_chart()
     }
 
@@ -65,22 +65,25 @@ class All_Charts extends Component {
             series : [
                 {
                     name:'DOM加载完成',
+                    //boundaryGap : false,
                     type:'line',
-                    stack: '总量',
+                    //stack: '总量',
                     //areaStyle: {normal: {}},
                     data: loadtime_chart.dom_load_data/*[120, 132, 101, 134, 90, 230, 210]*/
                 },
                 {
                     name:'首屏时间',
+                    //boundaryGap : false,
                     type:'line',
-                    stack: '总量',
+                    //stack: '总量',
                     //areaStyle: {normal: {}},
                     data: loadtime_chart.atf_data/*[220, 182, 191, 234, 290, 330, 310]*/
                 },
                 {
                     name:'window加载完成',
+                    //boundaryGap : false,
                     type:'line',
-                    stack: '总量',
+                    //stack: '总量',
                     //areaStyle: {normal: {}},
                     data: loadtime_chart.window_loaded_data/*[150, 232, 201, 154, 190, 330, 410]*/
                 }
