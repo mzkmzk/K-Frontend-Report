@@ -13,50 +13,9 @@ import TextField from 'material-ui/TextField'
 import action_error from '../../Actions/error'
 import Pagination from '../Utils/Pagination/Pagination'
 
-const ATTRIBUTE_OBJECT = {
-  data: [
-    {
-      key: 'message',
-      name: 'Message',
-      style: {width:'50px'}
-    },
-    {
-      key: 'line',
-      name: 'Line',
-      style: {width:'50px'}
-    },
-    {
-      key: 'column',
-      name: 'Column',
-      style:  {}
-    },
-    {
-      key: 'object',
-      name: 'Object',
-      style: {}
-    },
-    {
-      key: 'url',
-      name: 'URL',
-      style:  {}
-    },
-    {
-      key: 'referer',
-      name: 'Referer',
-      style: {}
-    },
-    {
-      key: 'updated_at',
-      name: '更新时间',
-      style: {width: '140px'}
-    },
-    {
-      key: 'user_agent',
-      name: 'UserAgent',
-      style: {}
-    }
-  ]
-}    
+import  { ERROR }   from '../../Constant/Attribute_Constant'    
+
+console.log(ERROR)
 
 class Error extends Component {
 
@@ -67,7 +26,7 @@ class Error extends Component {
         
         return (
             <K_Table 
-              ATTRIBUTE_OBJECT = {ATTRIBUTE_OBJECT}
+              ATTRIBUTE_OBJECT = {ERROR}
               entity = {error} 
               ajax_load_data = {ajax_load_data_error}
             />

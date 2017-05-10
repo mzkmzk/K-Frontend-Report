@@ -19,41 +19,8 @@ import Pagination from '../Utils/Pagination/Pagination'
 
 import CONSTANT from '../../Constant/Constant'
 import Utils from '../../Utils/Utils'
-    
-const ATTRIBUTE_OBJECT = {
-  data: [
-    {
-      key: 'dom_content_loaded',
-      name: 'DOM加载完成',
-      style: {width:'100px'}
-    },
-    {
-      key: 'atf',
-      name: '首屏时间',
-      style: {width:'100px'}
-    },
-    {
-      key: 'window_loaded',
-      name: 'window加载完成',
-      style: {width:'100px'}
-    },
-    {
-      key: 'referer',
-      name: 'Referer',
-      style: {}
-    },
-    {
-      key: 'updated_at',
-      name: '更新时间',
-      style: {width:'140px'}
-    },
-    {
-      key: 'user_agent',
-      name: 'UserAgent',
-      style: {}
-    },
-  ]
-}
+import { LOADTIME } from '../../Constant/Attribute_Constant'    
+
 
 class Loadtime extends Component {
 
@@ -65,7 +32,7 @@ class Loadtime extends Component {
         
         return (
             <K_Table 
-              ATTRIBUTE_OBJECT = {ATTRIBUTE_OBJECT}
+              ATTRIBUTE_OBJECT = {LOADTIME}
               entity = {loadtime} 
               ajax_load_data = {ajax_load_data_loadtime}
             />

@@ -32,7 +32,6 @@ class K_Table extends Component {
 
     componentDidMount() {
         let {  ajax_load_data } = this.props
-
         ajax_load_data(1)
     }
 

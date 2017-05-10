@@ -16,31 +16,7 @@ import Pagination from '../Utils/Pagination/Pagination'
 import CONSTANT from '../../Constant/Constant'
 import Utils from '../../Utils/Utils'
     
-const ATTRIBUTE_OBJECT = {
-  data: [
-    {
-      key: 'duration',
-      name: 'Duration',
-      style: {width:'100px'}
-    },
-    {
-      key: 'url',
-      name: 'url',
-      style: {},
-      type: 'url'
-    },
-    {
-      key: 'referer',
-      name: 'Referer',
-      style: {}
-    },
-    {
-      key: 'updated_at',
-      name: '更新时间',
-      style: {width:'140px'}
-    }
-  ]
-}
+import { NETWORK } from '../../Constant/Attribute_Constant' 
 class Network extends Component {
 
     
@@ -51,7 +27,7 @@ class Network extends Component {
         
         return (
             <K_Table 
-              ATTRIBUTE_OBJECT = {ATTRIBUTE_OBJECT}
+              ATTRIBUTE_OBJECT = { NETWORK }
               entity = {network} 
               ajax_load_data = {ajax_load_data_network}
             />
