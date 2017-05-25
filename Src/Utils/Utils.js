@@ -1,3 +1,4 @@
+import Constant from '../Constant/Constant'
 export default class Utils {
 
     static get_url_params() {
@@ -17,5 +18,13 @@ export default class Utils {
         }
 
         return args
+    }
+
+    static get_curent_host(){
+        if(__DEV__){
+            return Constant.TEST_URL
+        }else {
+            return Constant.PRODUCTION_URL
+        }
     }
 }

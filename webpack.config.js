@@ -4,7 +4,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const QiniuPlugin = require('qiniu-plugin')
 //const path = '/Users/maizhikun/Project/Thunder/LiXianSpace/code/mac'
-
+const __DEV__ =  process.env.NODE_ENV !== 'production'
 module.exports = {
 	entry:{ 
         //network: [
@@ -69,12 +69,13 @@ module.exports = {
 		],
 	},
     plugins: [
-        /*new webpack.DefinePlugin({
+        new webpack.DefinePlugin({
               'process.env': {
                 NODE_ENV: JSON.stringify('production')
-              }
+              },
+              '__DEV__': __DEV__
             }),
-        new webpack.optimize.UglifyJsPlugin(),*/
+        __DEV__ ?  function(){} : new webpack.optimize.UglifyJsPlugin(),
         /*new HtmlWebpackPlugin({
             filename: 'network.html',
             template:  path_.join(__dirname, '/Src/View/Network/network.html') ,

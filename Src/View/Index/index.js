@@ -9,7 +9,7 @@ import All_Charts from '../../Components/All_Charts/All_Charts'
 import Network from '../../Components/Network/Network'
 import Loadtime from '../../Components/Loadtime/Loadtime'
 import Error from '../../Components/Error/Error'
-
+import Site from '../../Components/Site/Site'
 
 import { configure_index_store } from '../../Store/configure_index_store'
 
@@ -36,7 +36,7 @@ singleKLogging.setOptions(
                 <Route path="/loadtime" component={Loadtime}/>
                 <Route path="/network" component={Network}/>
                 <Route path="/error" component={Error}/>
-                
+                <Route path="/site" component={Site}/>
               
             </Route>
           </Router>  

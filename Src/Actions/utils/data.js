@@ -1,5 +1,5 @@
-import k_ajax from 'k_ajax'
-
+//import k_ajax from 'k_ajax'
+import Utils from './Utils.js'
 
 let load_data = function(data, type){
     return {
@@ -33,8 +33,7 @@ exports.ajax_load_data = function(page, url, type, handle_data, params){
         params = Object.assign({
             page
         }, params) 
-
-        k_ajax.getJSON(url,params,{
+        Utils.ajax(url, params, {
             success: function(result){
                 let obj_result = JSON.parse(result)
                 
@@ -46,7 +45,20 @@ exports.ajax_load_data = function(page, url, type, handle_data, params){
 
                 dispatch( set_current_page( obj_result.current_page, type ) )
             }
-        })
+        }, get_state)
+        /*k_ajax.getJSON(url,params,{
+            success: function(result){
+                let obj_result = JSON.parse(result)
+                
+                if( handle_data ) obj_result = handle_data(obj_result)
+
+                dispatch( load_data( obj_result.data, type ) )
+
+                dispatch( set_total( obj_result.total, type ) )
+
+                dispatch( set_current_page( obj_result.current_page, type ) )
+            }
+        })*/
     }
 }
 

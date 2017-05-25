@@ -101,5 +101,13 @@ module.exports =  {
           style: {}
         }
       ]
+    },
+    SITE: {
+      data: [
+        {
+          key: 'host',
+          name: '根域名'
+        }
+      ]
     }    
 }
