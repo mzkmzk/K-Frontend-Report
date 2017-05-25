@@ -3,8 +3,18 @@ var path =  path_ = require('path');
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const QiniuPlugin = require('qiniu-plugin')
+var k_qiniu = require( 'k-qiniu')
+var env = require('./.env.js');
+var _package = require('./package')
 //const path = '/Users/maizhikun/Project/Thunder/LiXianSpace/code/mac'
 const __DEV__ =  process.env.NODE_ENV !== 'production'
+
+if ( !__DEV__  ) {
+  public_path =  'http://publish.404mzk.com/static/' + _package.name + "/" + _package.version +"/"
+}else{
+  public_path = null
+}
+
 module.exports = {
 	entry:{ 
         //network: [
@@ -17,7 +27,7 @@ module.exports = {
 	output: {
 		path:  path_.join(__dirname, 'Public'),
 		filename: '[name].bundle.js',
-        //publicPath: '/mac/public/'
+        publicPath: public_path//'/mac/public/'
 	},
 	module: {
         preLoaders: [
@@ -99,19 +109,19 @@ module.exports = {
             chunks: ['react', 'react-dom'],
         }),
         //七牛插件
-        /*new QiniuPlugin({
+         __DEV__ ? () => {} : new k_qiniu({
 
-        // 七牛云的两对密匙 Access Key & Secret Key
-        accessKey: '7SXiYZNWBQyXvS8eRg0PFNMlcRIxS9xQ2NaunjXn',
+          // 七牛云的两对密匙 Access Key & Secret Key
+          accessKey: env.qiniu_access_key,
+        
+          secretKey: env.qiniu_secret_key,
+        
+          // 七牛云存储空间名称
+          bucket: 'publish',
+          
+          // 上传到七牛后保存的文件名
+          path: 'static/[name]/[version]/[asset]'
 
-        secretKey: 'trgyS9ecNNBIogkKsOkipGQEe9TMYPNErSdDdKfO',
-
-        // 七牛云存储空间名称
-        bucket: 'journey',
-
-        // 上传到七牛后保存的文件名
-        path: 'rc/journey/0.0.1'
-
-      }),*/
+        }),
     ],
 };

@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "k_report_404mzk",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,11 @@
     "publish": "export NODE_ENV=prod&&webpack  --progress --colors",
     "publish-win": "set NODE_ENV=prod&&webpack  --progress --colors",
     "start": "webpack-dev-server --hot --inline --host k-frontend-report.404mzk.com --history-api-fallback --config ./webpack.config.js --port 9001",
-     "start-inside": "webpack-dev-server --hot --inline --host 10.10.45.12 --history-api-fallback --config ./webpack.config.js --port 9001"
+    "start-inside": "webpack-dev-server --hot --inline --host 10.10.45.12 --history-api-fallback --config ./webpack.config.js --port 9001",
+    "dev": "webpack -w",
+    "d": "npm run dev",
+    "production": "NODE_ENV=production webpack",
+    "p": "npm run production"
   },
   "repository": {
     "type": "git",
@@ -56,6 +60,7 @@
     "file-loader": "0.9.0",
     "html-loader": "0.4.3",
     "html-webpack-plugin": "2.22.0",
+    "k-qiniu": "1.0.4",
     "node-sass": "3.8.0",
     "react-hot-loader": "3.0.0-alpha.8",
     "react-router": "3.0.0",
