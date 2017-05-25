@@ -65,12 +65,14 @@ class Site extends Component {
     }
 
     render() {
-        let { site, actions } = this.props,
+        let { site, actions, user } = this.props,
+            { creator_user_id } = user,
             { ajax_load_data_site } = actions,
             { data }= site
         
         return (
             <div >
+                <p style={{marginLeft: '256px'}}>tips: 在域名的k_report文件中添加且仅有内容: { creator_user_id * 2 } </p>
                 <p style={{marginLeft: '256px'}}>tips: 暂时每个账号只能认领一个根域名</p>
                 <TextField style={{marginLeft: '256px'}}
                   hintText="填写根域名 eg: 404mzk.com"
