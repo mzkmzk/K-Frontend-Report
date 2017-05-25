@@ -12,8 +12,8 @@ let INNERT_URL = 'http://k-inner-report.404mzk.com/' ,
         LOAD_ERROR_CHART: INNERT_URL + 'v2/Chart_Controller/error_chart',
         AUTHENTICATION_SITE: INNERT_URL + 'v2/Site_Controller/authentication_site'
     },
-    TEST_URL: 'http://mac.k-report.404mzk.com',
-    PRODUCTION_URL: 'http://k-report.404mzk.com'
+    TEST_URL: 'http://mac.k-frontend-report.404mzk.com',
+    PRODUCTION_URL: 'http://k-frontend-report.404mzk.com'
 
 }
 
