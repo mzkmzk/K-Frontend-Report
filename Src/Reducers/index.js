@@ -6,8 +6,10 @@ import { error } from './error'
 import { network } from './network'
 import { loadtime } from './loadtime'
 import { site } from './site'
+import { log } from './log'
 import  user  from './user'
 import all_charts from './all_charts'
+import  filter_attribute  from './filter_attribute'
 
 exports.index = combineReducers({
     error,
@@ -15,5 +17,7 @@ exports.index = combineReducers({
     loadtime,
     site,
     user,
-    all_charts
+    log,
+    all_charts,
+    filter_attribute
 })

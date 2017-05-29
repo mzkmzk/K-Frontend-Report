@@ -1,6 +1,10 @@
 import CONSTANT from '../Constant/Constant'
+import Attribute_Constant from '../Constant/Attribute_Constant'
+
 import _ from 'underscore'
 import Utils from './utils/Utils.js'
+
+import Utils_Function from '../Utils/Utils'
 let load_loadtime_chart = loadtime_chart => {
     return {
         type: 'LOAD_LOADTIME_CHART',
@@ -19,6 +23,7 @@ let handle_loadtime_data = obj_result => {
 
 exports.ajax_load_loadtime_chart = (params = {}) => {
     return (dispatch, get_state) => {
+        let params = Utils_Function.get_filter_attribute_params(Attribute_Constant.LOADTIME.key, get_state)
         Utils.ajax(CONSTANT.URL.LOAD_LOADTIME_CHART,params,{
             success: result => {
                 let obj_result = handle_loadtime_data(JSON.parse(result))
@@ -51,8 +56,9 @@ let handle_network_data = obj_result => {
     }
 }
 
-exports.ajax_load_network_chart = (params = {}) => {
+exports.ajax_load_network_chart = () => { 
     return (dispatch, get_state) => {
+        let params = Utils_Function.get_filter_attribute_params(Attribute_Constant.NETWORK.key, get_state)
         Utils.ajax(CONSTANT.URL.LOAD_NETWORK_CHART, params, {
             success: result => {
                 let obj_result = handle_network_data(JSON.parse(result))
@@ -80,6 +86,7 @@ let handle_error_data = obj_result => {
 
 exports.ajax_load_error_chart = (params = {}) => {
     return (dispatch, get_state) => {
+        let params = Utils_Function.get_filter_attribute_params(Attribute_Constant.ERROR.key, get_state)
         Utils.ajax(CONSTANT.URL.LOAD_ERROR_CHART, params, {
             success: result => {
                 let obj_result = handle_error_data(JSON.parse(result))

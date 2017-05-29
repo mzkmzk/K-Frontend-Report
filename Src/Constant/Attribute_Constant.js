@@ -1,5 +1,6 @@
 module.exports =  {
     LOADTIME: {
+      key: 'LOADTIME',
       data: [
         {
           key: 'dom_content_loaded',
@@ -34,6 +35,7 @@ module.exports =  {
       ]
     },
     NETWORK: {
+      key: 'NETWORK',
       data: [
         {
           key: 'duration',
@@ -59,6 +61,7 @@ module.exports =  {
       ]
     },
     ERROR: {
+      key: 'ERROR',
       data: [
         {
           key: 'message',
@@ -102,7 +105,35 @@ module.exports =  {
         }
       ]
     },
+    LOG: {
+      key: 'LOG',
+      data: [
+        {
+          key: 'identifying',
+          name: '标识',
+          style:  {}
+        },
+       {
+          key: 'message',
+          name: 'Message',
+          
+          style:  {}
+        },
+        {
+          key: 'type',
+          name: '类型',
+          
+          style:  {}
+        },
+        {
+          key: 'referer',
+          name: 'referer',
+          style:  {}
+        }
+      ]
+    },
     SITE: {
+      key: 'SITE',
       data: [
         {
           key: 'host',

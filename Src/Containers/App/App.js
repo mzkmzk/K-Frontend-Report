@@ -56,6 +56,7 @@ class App extends Component {
                   <Link to="network"><MenuItem>Network</MenuItem></Link>
                   <Link to="error"><MenuItem>Error</MenuItem></Link>
                   <Link to="site"><MenuItem>Site</MenuItem></Link>
+                  <Link to="log"><MenuItem>Log</MenuItem></Link>
                   <Link onClick={this.signout}><MenuItem>Sign out</MenuItem></Link>
                 </Drawer>
                 {children}

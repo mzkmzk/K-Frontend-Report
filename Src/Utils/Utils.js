@@ -1,4 +1,5 @@
 import Constant from '../Constant/Constant'
+import _ from 'underscore'
 export default class Utils {
 
     static get_url_params() {
@@ -25,6 +26,34 @@ export default class Utils {
             return Constant.TEST_URL
         }else {
             return Constant.PRODUCTION_URL
+        }
+    }
+
+    static array_to_object(attribute_key, _array){
+        let new_object = {}
+        _.each(_array, element => {
+            new_object[ element[ attribute_key ] ] = element
+        })
+        return new_object
+    }
+
+    static object_to_array(_object){
+        let _array = []
+        _.mapObject(_object, element => {
+            _array.push(element)
+        })
+        return _array
+    }
+
+    static get_filter_attribute_params(entity_id, get_state){
+        let state = get_state(),
+            filter_attribte_data = state.filter_attribute.data,
+            entity_attribute = filter_attribte_data[ entity_id ]
+
+        if ( !entity_attribute ) return {}
+        
+        return {
+            where: JSON.stringify( Utils.object_to_array(entity_attribute) )
         }
     }
 }
