@@ -15,6 +15,8 @@ import TextField from 'material-ui/TextField'
 import K_Table from '../Utils/K_Table/K_Table'
 
 import action_loadtime from '../../Actions/loadtime'
+import action_filter_attribute from '../../Actions/filter_attribute'
+
 import Pagination from '../Utils/Pagination/Pagination'
 
 import CONSTANT from '../../Constant/Constant'
@@ -26,14 +28,16 @@ class Loadtime extends Component {
 
 
     render() {
-        let { loadtime, actions } = this.props,
+        let { loadtime, actions, filter_attribute } = this.props,
             { ajax_load_data_loadtime } = actions,
             { data }= loadtime
         
         return (
             <K_Table 
-              ATTRIBUTE_OBJECT = {LOADTIME}
-              entity = {loadtime} 
+              ENTITY = {LOADTIME}
+              entity = {loadtime}
+              actions = {actions}
+              filter_attribute = { filter_attribute.data[ LOADTIME.key ]  } 
               ajax_load_data = {ajax_load_data_loadtime}
             />
         )
@@ -50,7 +54,8 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(
         Object.assign(
             {},
-            action_loadtime
+            action_loadtime,
+            action_filter_attribute
          ),
         dispatch)
     }

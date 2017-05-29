@@ -11,7 +11,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 
 import action_network from '../../Actions/network'
-import Pagination from '../Utils/Pagination/Pagination'
+import action_filter_attribute from '../../Actions/filter_attribute'
 
 import CONSTANT from '../../Constant/Constant'
 import Utils from '../../Utils/Utils'
@@ -21,14 +21,16 @@ class Network extends Component {
 
     
     render() {
-        let { network, actions } = this.props,
+        let { network, actions, filter_attribute } = this.props,
             { ajax_load_data_network } = actions,
             { data }= network
         
         return (
             <K_Table 
-              ATTRIBUTE_OBJECT = { NETWORK }
-              entity = {network} 
+              ENTITY = {NETWORK}
+              entity = {network}
+              actions = {actions}
+              filter_attribute = { filter_attribute.data[ NETWORK.key ]  } 
               ajax_load_data = {ajax_load_data_network}
             />
         )
@@ -47,7 +49,8 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(
         Object.assign(
             {},
-            action_network
+            action_network,
+            action_filter_attribute
          ),
         dispatch)
     }

@@ -30,17 +30,6 @@ class Filter_Attribute extends Component {
       }
     }
 
-    componentDidMount() {
-        let {  filter_attribute, ENTITY } = this.props
-
-        /*_.map(filter_attribute, (element) => {
-          $(`#${ENTITY.key}_${element.key}`).val(element.value)
-        })*/
-        
-    }
-
-
-
     filter(page_index = 1){
       let {  ajax_load_data, ENTITY, actions } = this.props,
           filter_data = _.chain(ENTITY.data)
@@ -57,7 +46,10 @@ class Filter_Attribute extends Component {
                             })
                             .value()
       actions.set_entity_filter_attribute(ENTITY.key, Utils.array_to_object('key', filter_data) )
-      ajax_load_data( {where: JSON.stringify( filter_data )})
+      ajax_load_data( { 
+        where: JSON.stringify( filter_data ),
+        page: page_index
+      })
     }
 
 

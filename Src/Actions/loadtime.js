@@ -1,7 +1,11 @@
 import { ajax_load_data } from './utils/data'
 import CONSTANT from '../Constant/Constant'
+import Attribute_Constant from '../Constant/Attribute_Constant'
 
-const NAME = 'loadtime'
+import Utils_Function from '../Utils/Utils'
+
+
+const NAME = Attribute_Constant.LOADTIME.key
 
 let handle_data = obj_result => {
     obj_result.data.forEach( element => {
@@ -11,6 +15,6 @@ let handle_data = obj_result => {
     return obj_result
 }
 
-exports.ajax_load_data_loadtime = (page, params) => {
-    return ajax_load_data(page, CONSTANT.URL.LOADTIME_QUERY, NAME, handle_data, params)
+exports.ajax_load_data_loadtime = ( params) => {
+    return ajax_load_data( CONSTANT.URL.LOADTIME_QUERY, NAME, handle_data, params)
 }

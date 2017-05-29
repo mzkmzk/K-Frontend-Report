@@ -15,7 +15,7 @@ import TextField from 'material-ui/TextField'
 import K_Table from '../Utils/K_Table/K_Table'
 
 import action_log from '../../Actions/log'
-import Pagination from '../Utils/Pagination/Pagination'
+import action_filter_attribute from '../../Actions/filter_attribute'
 
 import CONSTANT from '../../Constant/Constant'
 import Utils from '../../Utils/Utils'
@@ -26,14 +26,16 @@ class Log extends Component {
 
 
     render() {
-        let { log, actions } = this.props,
+        let { log, actions, filter_attribute } = this.props,
             { ajax_load_data_log } = actions,
             { data }= log
         
         return (
             <K_Table 
-              ATTRIBUTE_OBJECT = {LOG}
-              entity = {log} 
+              ENTITY = {LOG}
+              entity = {log}
+              actions = {actions}
+              filter_attribute = { filter_attribute.data[ LOG.key ]  } 
               ajax_load_data = {ajax_load_data_log}
             />
         )
@@ -50,7 +52,8 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(
         Object.assign(
             {},
-            action_log
+            action_log,
+            action_filter_attribute
          ),
         dispatch)
     }

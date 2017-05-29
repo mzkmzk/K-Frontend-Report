@@ -11,23 +11,27 @@ import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 
 import action_error from '../../Actions/error'
+import action_filter_attribute from '../../Actions/filter_attribute'
+
 import Pagination from '../Utils/Pagination/Pagination'
 
 import  { ERROR }   from '../../Constant/Attribute_Constant'    
 
-console.log(ERROR)
 
 class Error extends Component {
 
     render() {
-        let { error, actions } = this.props,
+        let { error, actions, filter_attribute } = this.props,
             { ajax_load_data_error } = actions,
             { data }= error
         
         return (
             <K_Table 
-              ATTRIBUTE_OBJECT = {ERROR}
-              entity = {error} 
+
+              ENTITY = {ERROR}
+              entity = {error}
+              actions = {actions}
+              filter_attribute = { filter_attribute.data[ ERROR.key ]  } 
               ajax_load_data = {ajax_load_data_error}
             />
         )
@@ -44,7 +48,8 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(
         Object.assign(
             {},
-            action_error
+            action_error,
+            action_filter_attribute
          ),
         dispatch)
     }

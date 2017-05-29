@@ -33,14 +33,36 @@ class All_Charts extends Component {
         actions.ajax_load_error_chart()
         
     }
+
+    go_filter(entity_key, filter_attribute_name, echart_data){
+
+      let { filter_attribute, actions, router } = this.props,
+          filter_attribute_data = filter_attribute.data,
+          filter_attribute_entity = filter_attribute_data[ entity_key ] || {}
+          filter_attribute_entity[ filter_attribute_name ] = {
+            key: filter_attribute_name,
+            condition: 'REGEXP',
+            value: echart_data.name
+          }
+
+      actions.set_entity_filter_attribute(entity_key, filter_attribute_entity)
+      setTimeout(() => { //加定时 不然 echat会有个报错 虽然不影响使用
+        router.push('/' + entity_key.toLowerCase())
+      }, 0)
+      
+      
+    }
     
     render() {
         let { error, actions, all_charts, filter_attribute } = this.props,
             { network_chart, loadtime_chart, error_chart } = all_charts,
             { ajax_load_data_error } = actions,
             { data }= error,
-            onEvents = {
-              'click': this.ahaha
+            on_network_events = {
+              click: this.go_filter.bind(this, NETWORK.key, 'url')
+            },
+            on_error_events = {
+              click: this.go_filter.bind(this, ERROR.key, 'column')
             }
         
         return (
@@ -66,7 +88,7 @@ class All_Charts extends Component {
                  />
                   
                  <ReactEcharts
-                          onEvents={onEvents}
+                          onEvents={on_network_events}
                           option={ network_option(network_chart) } 
                           style={{height: '350px', width: '100%'}} 
                           className='react_for_echarts' />
@@ -78,7 +100,7 @@ class All_Charts extends Component {
                     filter_attribute = { filter_attribute.data[ ERROR.key ]  }
                  />
                  <ReactEcharts
-                          onEvents={onEvents}
+                          onEvents={on_error_events}
                           option={ error_option(error_chart) } 
                           style={{height: '350px', width: '100%'}} 
                           className='react_for_echarts' />

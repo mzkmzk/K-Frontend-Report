@@ -12,7 +12,8 @@ import TextField from 'material-ui/TextField'
 import Snackbar from 'material-ui/Snackbar'
 
 import action_site from '../../Actions/site'
-import Pagination from '../Utils/Pagination/Pagination'
+import action_filter_attribute from '../../Actions/filter_attribute'
+
 
 import CONSTANT from '../../Constant/Constant'
 import Utils from '../../Utils/Utils'
@@ -65,7 +66,7 @@ class Site extends Component {
     }
 
     render() {
-        let { site, actions, user } = this.props,
+        let { site, actions, user, filter_attribute } = this.props,
             { creator_user_id } = user,
             { ajax_load_data_site } = actions,
             { data }= site
@@ -87,8 +88,11 @@ class Site extends Component {
                   onRequestClose={this.handleRequestClose}
                 />
                 <K_Table 
-                  ATTRIBUTE_OBJECT = { SITE }
-                  entity = { site } 
+
+                   ENTITY = {SITE}
+                  entity = {site}
+                  actions = {actions}
+                  filter_attribute = { filter_attribute.data[ SITE.key ]  } 
                   ajax_load_data = {ajax_load_data_site}
                 />
             </div>
@@ -108,7 +112,8 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(
         Object.assign(
             {},
-            action_site
+            action_site,
+            action_filter_attribute
          ),
         dispatch)
     }
