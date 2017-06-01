@@ -129,7 +129,12 @@ module.exports =  {
           key: 'referer',
           name: 'referer',
           style:  {}
-        }
+        },
+        {
+          key: 'updated_at',
+          name: '更新时间',
+          style: {width:'140px'}
+        },
       ]
     },
     SITE: {
